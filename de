@@ -1,0 +1,71 @@
+[
+  {
+    "ref": "ans_efc2667e-d833-4110-8274-f218021d5fca",
+    "keyword": "key_4ce4099c-751e-4e06-ac98-819b6ace2262",
+    "answer": "🙌 Hello welcome to this *Chatbot*",
+    "options": {
+      "buttons": [],
+      "capture": false,
+      "delay": 0,
+      "nested": [],
+      "keyword": {},
+      "callback": false
+    },
+    "refSerialize": "b56b78a9091a484ded26150ed0d0220a",
+    "from": "5491166315085"
+  },
+  {
+    "ref": "ans_ba92cbc6-c4ee-4099-beb9-fa1e286eb1ff",
+    "keyword": "ans_efc2667e-d833-4110-8274-f218021d5fca",
+    "answer": "I share with you the following links of interest about the project\n👉 *doc* to view the documentation",
+    "options": {
+      "buttons": [],
+      "capture": false,
+      "delay": 800,
+      "nested": [],
+      "keyword": {},
+      "callback": false
+    },
+    "refSerialize": "f48019f3aeecf112e85f65d74596bc5a",
+    "from": "5491166315085"
+  },
+  {
+    "ref": "ans_7f4832bf-6cbe-4e30-891c-dbde9f92e10f",
+    "keyword": "ans_ba92cbc6-c4ee-4099-beb9-fa1e286eb1ff",
+    "answer": "__capture_only_intended__",
+    "options": {
+      "buttons": [],
+      "capture": true,
+      "delay": 800,
+      "nested": [
+        {
+          "ref": "key_ad4d9452-7e38-4e7c-9997-df846c90b0fb",
+          "keyword": "doc",
+          "options": {
+            "sensitive": false,
+            "regex": false
+          },
+          "refSerialize": "5a8225144cb89933cbe2a9a3d251d9a2"
+        },
+        {
+          "ref": "ans_5a844985-6f56-455c-8cb6-d210d7a746c7",
+          "keyword": "key_ad4d9452-7e38-4e7c-9997-df846c90b0fb",
+          "answer": "You can see the documentation here\n📄 https://builderbot.app/docs \n\nDo you want to continue? *yes*",
+          "options": {
+            "buttons": [],
+            "capture": true,
+            "delay": 0,
+            "nested": [],
+            "keyword": {},
+            "callback": true
+          },
+          "refSerialize": "554022e9799990e8115b9612bdc5703f"
+        }
+      ],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "9bb6df44d4e7f92a39f98c285381e08e",
+    "from": "5491166315085"
+  }
+]
