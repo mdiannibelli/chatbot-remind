@@ -1,18 +1,16 @@
-import { FlowAdapter } from "./config/adapters/flow.adapter";
 import { ProviderAdapter } from "./config/adapters/provider.adapter";
-import { Server } from "./presentation/server";
 import { PostgreSQLDatabase } from "./infraestructure/adapters/postgresql.impl";
 import { config } from "./config/env.config";
-import { discordFlow, registerFlow, welcomeFlow } from "./presentation/keywords";
+import { Server } from "./presentation/server";
+import { FlowAdapter } from "./config/adapters/flow.adapter";
 
 (async () => {
     main()
 })();
 
 async function main() {
-    const adapterFlow = FlowAdapter.newFlow([discordFlow, welcomeFlow, registerFlow]);
-    const adapterProvider = ProviderAdapter.newProvider();
-    const adapterDB = new PostgreSQLDatabase.createDatabase({
+    ProviderAdapter.newProvider();
+    PostgreSQLDatabase.createDatabase({
         host: config.POSTGRES_DB_HOST,
         user: config.POSTGRES_DB_USER,
         database: config.POSTGRES_DB_NAME,
@@ -20,6 +18,9 @@ async function main() {
         port: config.POSTGRES_DB_PORT
     });
 
-    const server = new Server(adapterFlow, adapterProvider, adapterDB);
+    const { discordFlow, registerFlow, welcomeFlow } = await import("./presentation/keywords");
+    FlowAdapter.newFlow([discordFlow, welcomeFlow, registerFlow]);
+
+    const server = new Server(FlowAdapter.getFlows(), ProviderAdapter.getProvider(), PostgreSQLDatabase.getDatabase());
     await server.connect();
 }

@@ -9,7 +9,7 @@ export class ProviderAdapter {
 
     static getProvider(): Provider {
         if (!this.provider) {
-            throw new Error("Provider not initialized. Call initializeProvider first.");
+            throw new Error("Provider not initialized. Call newProvider first.");
         }
         return this.provider;
     }
