@@ -3,13 +3,14 @@ import { ProviderAdapter } from "./config/adapters/provider.adapter";
 import { Server } from "./presentation/server";
 import { PostgreSQLDatabase } from "./infraestructure/adapters/postgresql.impl";
 import { config } from "./config/env.config";
+import { discordFlow, registerFlow, welcomeFlow } from "./presentation/keywords";
 
 (async () => {
     main()
 })();
 
 async function main() {
-    const adapterFlow = FlowAdapter.newFlow([]);
+    const adapterFlow = FlowAdapter.newFlow([discordFlow, welcomeFlow, registerFlow]);
     const adapterProvider = ProviderAdapter.newProvider();
     const adapterDB = new PostgreSQLDatabase.createDatabase({
         host: config.POSTGRES_DB_HOST,
