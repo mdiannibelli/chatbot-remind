@@ -1,7 +1,7 @@
 import { join } from 'path'
 import { createBot, createProvider, createFlow, addKeyword, utils } from '@builderbot/bot'
-import { PostgreSQLAdapter as PostgresDatabase } from '@builderbot/database-postgres'
-import { JsonFileDB as Database } from '@builderbot/database-json'
+import { PostgreSQLAdapter as Database } from '@builderbot/database-postgres'
+// import { JsonFileDB as Database } from '@builderbot/database-json'
 import { BaileysProvider as Provider } from '@builderbot/provider-baileys'
 
 const PORT = process.env.PORT ?? 3008

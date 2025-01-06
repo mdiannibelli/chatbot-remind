@@ -1,4 +1,3 @@
-import { BaileysProvider } from "@builderbot/provider-baileys";
 import { FlowAdapter } from "./config/adapters/flow.adapter";
 import { ProviderAdapter } from "./config/adapters/provider.adapter";
 import { Server } from "./presentation/server";
@@ -11,8 +10,8 @@ import { config } from "./config/env.config";
 
 async function main() {
     const adapterFlow = FlowAdapter.newFlow([]);
-    const adapterProvider = ProviderAdapter.newProvider(BaileysProvider);
-    const adapterDB = new PostgreSQLDatabase({
+    const adapterProvider = ProviderAdapter.newProvider();
+    const adapterDB = new PostgreSQLDatabase.createDatabase({
         host: config.POSTGRES_DB_HOST,
         user: config.POSTGRES_DB_USER,
         database: config.POSTGRES_DB_NAME,

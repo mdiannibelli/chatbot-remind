@@ -1,5 +1,5 @@
 import { DatabaseAdapter } from "~/config/adapters/db.adapter";
-import { PostgreSQLAdapter as PostgresDatabase } from '@builderbot/database-postgres'
+import { PostgreSQLAdapter as Database } from '@builderbot/database-postgres'
 
 interface Options {
     host: string,
@@ -10,10 +10,16 @@ interface Options {
 }
 
 export class PostgreSQLDatabase implements DatabaseAdapter {
-    public client: PostgresDatabase
-    constructor(private options: Options) {
-        this.client = new PostgresDatabase(this.options)
+    static client: Database
+
+    static createDatabase(options: Options): void {
+        if (!this.client) {
+            this.client = new Database(options);
+        } else {
+            throw new Error('Database already initialized.');
+        }
     }
+
 
     connect(): Promise<void> {
         throw new Error("Method not implemented.");
@@ -34,4 +40,10 @@ export class PostgreSQLDatabase implements DatabaseAdapter {
         throw new Error("Method not implemented.");
     }
 
+    static getDatabase(): Database {
+        if (!this.client) {
+            throw new Error("Database not initialized. Call createDatabase first.");
+        }
+        return this.client;
+    }
 }
